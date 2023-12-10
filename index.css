@@ -8,34 +8,13 @@ body {
   overflow-x: hidden;
 }
 
-#auth_button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-#flipbook {
-  width: 100vw;
-  height: 100vh !important;
-}
-#flipbook .turn-page {
-  background-color: #ccc;
-  background-size: 100% 100%;
-}
-
-.turn-page-wrapper,
-.turn-page {
-  height: 100vh !important;
-  background-size: cover !important;
-}
-
 .grid-gallery {
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  grid-auto-rows: 250px;
+  /* grid-auto-rows: 250px; */
   grid-auto-flow: dense;
   grid-gap: 20px;
 }
@@ -49,15 +28,10 @@ body {
   position: relative;
   background-color: #efefef;
   overflow: hidden;
+  width: fit-content;
 }
 
-.grid-gallery .grid-item img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
-}
-
+.grid-gallery .grid-item img,
 .grid-gallery .grid-item video {
   width: 100%;
   height: 100%;
