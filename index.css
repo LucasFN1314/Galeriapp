@@ -62,7 +62,7 @@ body {
   visibility: visible;
 }
 
-.loading {
+.placeholder {
   width: 100% !important;
   height: 300px;
 }
