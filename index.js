@@ -8,6 +8,7 @@ let INDEX = 0;
 let processed = 0;
 
 async function Load() {
+  LOADER.classList = ["loader-disabled"];
   processed = 0;
   LOADER.setAttribute("class", "loader-disabled");
   await AddPlaceholders();
@@ -68,6 +69,8 @@ function Verify() {
     for (const placeholder of placeholders) {
       placeholder.remove();
     }
+
+    if (INDEX < FILES.length) LOADER.classList = ["loader-enabled"];
   }
 }
 
