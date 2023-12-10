@@ -850,15 +850,22 @@ const loader = document.getElementById("loader");
 
 async function Load() {
   loader.setAttribute("class", "loader-disabled");
+
+  for (let index = 0; index < PER_PAGE; index++) {
+    let grid_item = document.createElement("div");
+    grid_item.setAttribute("class", "grid-item loading");
+    grid.appendChild(grid_item);
+  }
+
   for (let index = 0; index < PER_PAGE; index++) {
     let file = FILES[INDEX];
-    let grid_item = document.createElement("div");
-    grid_item.className = "grid-item";
-
     let element = await Element(file);
 
-    grid_item.appendChild(element);
-    grid.appendChild(grid_item);
+    let loading = document.getElementsByClassName("loading")?.[0];
+    if (loading) {
+      loading.setAttribute("class", "grid-item");
+      loading.appendChild(element);
+    }
     INDEX++;
   }
 
@@ -883,7 +890,7 @@ function Element(file) {
       element.muted = true;
       element.loop = true;
       element.onerror = () => {
-        element.parentNode.parentNode.removeChild(element.parentNode);
+        element?.parentNode?.parentNode?.removeChild(element.parentNode);
       };
       resolve(element);
     };
