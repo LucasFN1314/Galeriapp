@@ -846,7 +846,10 @@ const TOTAL_ITEMS = FILES.length;
 const PER_PAGE = 50;
 let INDEX = 0;
 
+const loader = document.getElementById("loader");
+
 async function Load() {
+  loader.setAttribute("class", "loader-disabled");
   for (let index = 0; index < PER_PAGE; index++) {
     let file = FILES[INDEX];
     let grid_item = document.createElement("div");
@@ -860,9 +863,9 @@ async function Load() {
   }
 
   if (INDEX < TOTAL_ITEMS) {
-    document.getElementById("loader").setAttribute("class", "loader-enabled");
+    loader.setAttribute("class", "loader-enabled");
   } else {
-    document.getElementById("loader").setAttribute("class", "loader-disabled");
+    loader.setAttribute("class", "loader-disabled");
   }
 }
 
@@ -888,7 +891,7 @@ function Element(file) {
 }
 
 window.onload = () => {
-  document.getElementById("loader").addEventListener("click", () => {
+  loader.addEventListener("click", () => {
     Load();
   });
   Load();
